@@ -1,0 +1,173 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+pt-BR:
+  attributes:
+    actions: "Ações"
+  activerecord:
+    models:
+      bus_company: "Empresa de Ônibus"
+      city: "Cidade"
+      ticket: "Passagem"
+      transaction: "Transação"
+      university: "Universidade"
+      user_ticket: "Passagem"
+      user: "Usuário"
+    enums:
+      transaction:
+        months:
+          january: "Janeiro"
+          february: "Fevereiro"
+          march: "Março"
+          april: "Abril"
+          may: "Maio"
+          june: "Junho"
+          july: "Julho"
+          august: "Agosto"
+          september: "Setembro"
+          october: "Outubro"
+          november: "Novembro"
+          december: "Dezembro"
+        statuses:
+          open: "Aberto"
+          finish: "Aguardando depósito"
+          close: "Concluído"
+      user:
+        bank_options:
+          checking: "Conta Corrente"
+          savings: "Conta Poupança"
+        roles: &user_role
+          member: "Membro"
+          president: "Presidente"
+          treasurer: "Tesoureiro"
+          secretary: "Secretário"
+          vice_president: "Vice-presidente"
+          vice_treasurer: "2º Tesoureiro"
+          vice_secretary: "2º Secretário"
+          fiscal_council: "Conselho Fiscal"
+          admin: "Administrador"
+    attributes:
+      bus_company:
+        name: "Nome"
+        cnpj: "CNPJ"
+        city: "Cidade"
+        neighborhood: "Bairro"
+        address: "Endereço"
+      city:
+        name: "Nome"
+        state: "Estado"
+      direction: *user_role
+      ticket:
+        source_city_id: "Cidade de Origem"
+        source_city: "Cidade de Origem"
+        destination_city_id: "Cidade de Destino"
+        destination_city: "Cidade de Destino"
+        bus_company_id: "Empresa de Ônibus"
+        bus_company: "Empresa de Ônibus"
+        value: "Valor"
+        total_value: "Valor total"
+        itinerary: "Itinerário"
+        quantity: "Quantidade"
+      transaction:
+        user_id: "Usuário"
+        month: "Mês"
+        year: "Ano"
+        status: "Status"
+      university:
+        name: "Nome"
+        abbreviation: "Sigla"
+        cnpj: "CNPJ"
+        city_id: "Cidade"
+        city: "Cidade"
+        neighborhood: "Bairro"
+        address: "Endereço"
+      user_ticket:
+        user_id: "Usuário"
+        ticket_id: "Ticket"
+        transaction_id: "Transação"
+        quantity: "Quantidade"
+        original_value: "Valor original"
+        total_value: "Valor total"
+        total: "Valor total"
+      user:
+        about: "Sobre"
+        current_password: "Senha atual"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+        email: "E-mail"
+        first_name: "Nome"
+        last_name: "Sobrenome"
+        cpf: "CPF"
+        rg: "RG"
+        birthdate: "Data de Nascimento"
+        father_name: "Nome do pai"
+        mother_name: "Nome da mãe"
+        parents: "Nome dos pais"
+        address: "Endereço"
+        phone: "Telefone Fixo"
+        mobile_phone: "Telefone Celular"
+        bank_information: "Informação bancária"
+        bank_account: "Número da conta"
+        bank_agency: "Número da agência"
+        bank_option: "Opção de conta"
+        university_id: "Universidade"
+        course: "Curso"
+        semester: "Semestre"
+        place: "Localização adicional"
+        semester_start: "Início de semestre"
+        semester_end: "Final de semestre"
+        responsible_id: "Usuário responsável"
+        responsible: "Usuário responsável"
+        ticket_responsible: "Responsável"
+        role: "Função"
+    errors:
+      messages:
+        confirmation: "Você precisa confirmar o valor inserido no campo %{attribute}"
+        greater_than_or_equal_to: "precisa ser maior do que %{count}"
+        invalid_cpf: "Oops, esse CPF é inválido. Por favor, verifique!"
+        invalid_cnpj: "Oops, esse CNPJ é inválido. Por favor, verifique!"
+        blank: "%{attribute} não pode ficar em branco"
+        required: "%{attribute} inválido(a)"
+        taken: "Este %{attribute} já foi utilizado(a)"
+        record_invalid: "A validação falhou: %{errors}"
+        not_a_number: "%{attribute} não é um número válido"
+        invalid: "%{attribute} atual não corresponde"
+        too_long: "Campo com texto maior do que o permitido (%{count})"
+        restrict_dependent_destroy:
+          has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
+          has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+  helpers:
+    label:
+      direction: *user_role
+    submit:
+      create: "Criar %{model}"
+      submit: "Salvar %{model}"
+      update: "Atualizar %{model}"

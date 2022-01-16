@@ -1,0 +1,169 @@
+# Extra requires
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+# Common configuration
+AllCops:
+  TargetRailsVersion: 5.2.2
+  Exclude:
+    - db/*
+    - db/seeds/*
+  NewCops: enable
+
+#################### Bundler ###############################
+
+Bundler/GemComment:
+  Description: "Add a comment describing each gem."
+  Enabled: true
+
+#################### Layout ###########################
+
+Layout/LineLength:
+  Description: "Line is too long"
+  Enabled: true
+  Max: 100
+
+Layout/BlockAlignment:
+  Description: "Align block ends correctly."
+  Enabled: true
+  VersionAdded: "0.53"
+  # The value `start_of_block` means that the `end` should be aligned with line
+  # where the `do` keyword appears.
+  # The value `start_of_line` means it should be aligned with the whole
+  # expression's starting line.
+  # The value `either` means both are allowed.
+  EnforcedStyleAlignWith: start_of_block
+  SupportedStylesAlignWith:
+    - either
+    - start_of_block
+    - start_of_line
+
+Layout/ClassStructure:
+  Description: "Enforces a configured order of definitions within a class body."
+  StyleGuide: "#consistent-classes"
+  Enabled: true
+  VersionAdded: "0.52"
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - initializer
+    - public_class_methods
+    - public_methods
+    - protected_methods
+    - private_methods
+
+#################### Style ###############################
+
+Style/ClassAndModuleChildren:
+  Description: "Checks style of children classes and modules."
+  Enabled: true
+  #
+  # Basically there are two different styles:
+  #
+  # `nested` - have each child on a separate line
+  #   class Foo
+  #     class Bar
+  #     end
+  #   end
+  #
+  # `compact` - combine definitions as much as possible
+  #   class Foo::Bar
+  #   end
+  #
+  # The compact style is only forced, for classes or modules with one child.
+  EnforcedStyle: compact
+  SupportedStyles:
+    - nested
+    - compact
+
+#################### Metrics ###############################
+
+Metrics/AbcSize:
+  Description: >-
+    A calculated magnitude based on number of assignments,
+    branches, and conditions.
+  Enabled: true
+  # The ABC size is a calculated magnitude, so this number can be an Integer or
+  # a Float.
+  Max: 17
+
+Metrics/BlockLength:
+  Description: "Avoid long blocks with many lines."
+  Enabled: true
+  Max: 35
+
+# Avoid complex methods.
+Metrics/CyclomaticComplexity:
+  Description: >-
+    A complexity metric that is strongly correlated to the number
+    of test cases needed to validate a method.
+  Enabled: true
+  Max: 7
+
+Metrics/MethodLength:
+  Description: "Avoid methods longer than 10 lines of code."
+  Enabled: true
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Description: >-
+    A complexity metric geared towards measuring complexity for a
+    human reader.
+  Enabled: true
+  VersionAdded: "0.25"
+  Max: 8
+
+#################### Rails ###############################
+
+Rails/BulkChangeTable:
+  Description: "Check whether alter queries are combinable."
+  Enabled: false
+
+Rails/CreateTableWithTimestamps:
+  Description: >-
+    Checks the migration for which timestamps are not included
+    when creating a new table.
+  Enabled: false
+
+Rails/Date:
+  Description: >-
+    Checks the correct usage of date aware methods,
+    such as Date.today, Date.current etc.
+  Enabled: true
+  # The value `strict` disallows usage of `Date.today`, `Date.current`,
+  # `Date#to_time` etc.
+  # The value `flexible` allows usage of `Date.current`, `Date.yesterday`, etc
+  # (but not `Date.today`) which are overridden by ActiveSupport to handle current
+  # time zone.
+  EnforcedStyle: strict
+  SupportedStyles:
+    - strict
+    - flexible
+
+Rails/SaveBang:
+  Description: "Identifies possible cases where Active Record save! or related should be used."
+  Enabled: true
+
+Rails/TimeZone:
+  Description: "Checks the correct usage of time zone aware methods."
+  Enabled: true
+  # The value `strict` means that `Time` should be used with `zone`.
+  # The value `flexible` allows usage of `in_time_zone` instead of `zone`.
+  EnforcedStyle: strict
+  SupportedStyles:
+    - strict
+    - flexible
+
+#################### Peformance ###############################
+
+Performance/CaseWhenSplat:
+  Description: >-
+    Reordering `when` conditions with a splat to the end
+    of the `when` branches can improve performance.
+  Enabled: true
