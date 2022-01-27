@@ -75,7 +75,7 @@ gem 'tailwindcss-rails', '~> 2.0'
 gem 'pg', '~> 1.2'
 
 # Sidekiq for background processing
-gem 'sidekiq', '~> 6.3'
+gem 'sidekiq', '~> 6.4'
 
 # Some useful validators
 gem 'validators'

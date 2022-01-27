@@ -218,7 +218,7 @@ GEM
       sendgrid-ruby (~> 6.4)
     sendgrid-ruby (6.6.0)
       ruby_http_client (~> 3.4)
-    sidekiq (6.3.1)
+    sidekiq (6.4.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -288,7 +288,7 @@ DEPENDENCIES
   redis (~> 4.0)
   selenium-webdriver
   sendgrid-actionmailer
-  sidekiq (~> 6.3)
+  sidekiq (~> 6.4)
   sprockets-rails
   stimulus-rails
   table_print
